@@ -129,6 +129,7 @@ public class ClienteDaoImpl implements Serializable {
         Cliente cliente;
         List<Cliente> clientes = new ArrayList<>();
         try {
+            System.out.println("Teste Github");
             conexao = FabricaConexao.abrirConexao();
             preparando = conexao.prepareStatement(consulta);
             preparando.setString(1, "%" + nome + "%");
