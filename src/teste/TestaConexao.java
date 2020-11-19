@@ -24,19 +24,8 @@ public class TestaConexao {
     }
 
     public static void main(String[] args) throws SQLException {
-        testeSalvar();
+  
     }
-    
-    public static void testeSalvar() throws SQLException{
-       System.out.println("salvar");
-        cliente = new Cliente(
-                null,
-                UtilGerador.gerarCaracter(10),
-                UtilGerador.gerarEmail(),
-                UtilGerador.gerarTelefoneFixo(),
-                Double.parseDouble(UtilGerador.gerarNumero(3))
-        );
-        clienteDaoImpl.salvarCliente(cliente); 
-    }
+   
     
 }

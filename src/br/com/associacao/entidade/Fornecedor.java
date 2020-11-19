@@ -12,44 +12,23 @@ import java.util.List;
  *
  * @author rhuan.matos
  */
-public class Fornecedor implements Serializable {
+public class Fornecedor extends Pessoa implements Serializable {
 
-    private Integer id;
-    private String nome;
     private String cnpj;
     private String inscricaoEstadual;
-    private String email;
-    private String telefone;
     private List<Endereco> enderecos;
 
     public Fornecedor() {
     }
 
-    public Fornecedor(Integer id, String nome, String cnpj, String inscricaoEstadual, String email, String telefone) {
-        this.id = id;
-        this.nome = nome;
+    public Fornecedor(String cnpj, String inscricaoEstadual, List<Endereco> enderecos, Integer id, String nome, String email, String telefone) {
+        super(id, nome, email, telefone);
         this.cnpj = cnpj;
         this.inscricaoEstadual = inscricaoEstadual;
-        this.email = email;
-        this.telefone = telefone;
-
+        this.enderecos = enderecos;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    
+    
 
     public String getCnpj() {
         return cnpj;
@@ -65,22 +44,6 @@ public class Fornecedor implements Serializable {
 
     public void setInscricaoEstadual(String inscricaoEstadual) {
         this.inscricaoEstadual = inscricaoEstadual;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public List<Endereco> getEnderecos() {
