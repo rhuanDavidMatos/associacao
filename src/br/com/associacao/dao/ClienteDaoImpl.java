@@ -7,6 +7,7 @@ package br.com.associacao.dao;
 
 import br.com.associacao.entidade.Cliente;
 import br.com.associacao.entidade.Endereco;
+import br.com.associacao.entidade.Pessoa;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,26 +21,22 @@ import java.util.List;
  *
  * @author Admin
  */
-public class ClienteDaoImpl implements Serializable {
+public class ClienteDaoImpl extends PessoaDaoImpl implements Serializable {
 
-    private Connection conexao;
-    private PreparedStatement preparando;
-    private ResultSet resultSet;
-
-    public void salvarCliente(Cliente cliente) throws SQLException {
-        String sql = "INSERT INTO cliente(nome, email, telefone, salario)"
-                + " VALUES(?, ?, ?, ?)";
+    @Override
+    public void salvar(Pessoa pessoa) throws SQLException {
+        super.salvar(pessoa);
+        Cliente cliente = (Cliente) pessoa;
+        String sql = "INSERT INTO cliente(salario, idPessoa)"
+                + " VALUES(?, ?)";
         try {
-            conexao = FabricaConexao.abrirConexao();
-            preparando = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparando.setString(1, cliente.getNome());
-            preparando.setString(2, cliente.getEmail());
-            preparando.setString(3, cliente.getTelefone());
+
+            preparando = conexao.prepareStatement(sql);
             preparando.setDouble(4, cliente.getSalario());
             preparando.executeUpdate();
-            resultSet = preparando.getGeneratedKeys();
-            resultSet.next();
-            cliente.setId(resultSet.getInt(1));
+            preparando.setInt(1, cliente.getId());
+            preparando.executeUpdate();
+
             EnderecoDaoImpl enderecoDaoImpl = new EnderecoDaoImpl();
             enderecoDaoImpl.salvarCliente(cliente.getEndereco(),
                     cliente.getId(), conexao);

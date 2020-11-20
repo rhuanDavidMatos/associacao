@@ -215,7 +215,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         cliente.setSalario(Double.parseDouble(vSalario.getText()));
         clienteDao = new ClienteDaoImpl();
         try {
-            clienteDao.salvarCliente(cliente);
+            clienteDao.salvar(cliente);
             JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!");
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar Cliente");

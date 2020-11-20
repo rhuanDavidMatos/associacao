@@ -44,7 +44,7 @@ public class ClienteDaoImplTest {
                 UtilGerador.gerarNumero(5) + "-" + UtilGerador.gerarNumero(3)
         );
         cliente.setEndereco(endereco);
-        clienteDaoImpl.salvarCliente(cliente);
+        clienteDaoImpl.salvar(cliente);
     }
 
    @Test

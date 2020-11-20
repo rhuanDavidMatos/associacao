@@ -30,13 +30,14 @@ public class FornecedorDaoImplTest {
     public void testSalvar() throws Exception {
         System.out.println("salvar");
         List<Endereco> enderecos = new ArrayList<>();
+//        Integer id, String nome, String email, String telefone, String cnpj, String inscricaoEstadual
         fornecedor = new Fornecedor(
                 null,
                 "Nome " + UtilGerador.gerarCaracter(10),
-                UtilGerador.gerarNumero(10),
-                UtilGerador.gerarNumero(6),
                 UtilGerador.gerarEmail(),
-                UtilGerador.gerarTelefoneFixo()
+                UtilGerador.gerarTelefoneFixo(),
+                UtilGerador.gerarNumero(10),
+                UtilGerador.gerarNumero(6)
         );
 
         for (int i = 0; i < 2; i++) {
